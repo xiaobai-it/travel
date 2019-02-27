@@ -1,11 +1,13 @@
 <template>
     <div>
-      <Header/>
+      <myHeader/>
+      <mySwiper/>
     </div>
 </template>
 
 <script>
-  import Header from '../../components/Header/Header'
+  import myHeader from '../../components/Header/Header'
+  import mySwiper from '../../components/Swiper/Swiper'
 
   export default {
     data() {
@@ -14,7 +16,8 @@
       }
     },
     components:{
-      Header
+      myHeader,
+      mySwiper
     }
   }
 </script>
