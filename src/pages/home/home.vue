@@ -1,15 +1,20 @@
 <template>
     <div>
-      home页面
+      <Header/>
     </div>
 </template>
 
 <script>
+  import Header from '../../components/Header/Header'
+
   export default {
     data() {
       return {
-        message: ''
+        message: '',
       }
+    },
+    components:{
+      Header
     }
   }
 </script>
