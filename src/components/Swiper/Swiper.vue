@@ -1,8 +1,12 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
-      <swiper-slide><img class="swiper-img" src="http://img1.qunarzz.com/piao/fusion/1812/d1/cd4f32e924a5a302.jpg_750x200_3d492837.jpg" alt=""/></swiper-slide>
-      <swiper-slide><img class="swiper-img" src="http://img1.qunarzz.com/piao/fusion/1808/70/5603e6a535062402.jpg_750x200_2c552f2c.jpg" alt=""/></swiper-slide>
+    <swiper :options="swiperOption" v-if="swiperData.length">
+      <swiper-slide v-for="(item) in swiperData " :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl" alt=""/>
+      </swiper-slide>
+
+      <!--<swiper-slide><img class="swiper-img" src="http://img1.qunarzz.com/piao/fusion/1812/d1/cd4f32e924a5a302.jpg_750x200_3d492837.jpg" alt=""/></swiper-slide>-->
+
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
@@ -10,16 +14,16 @@
 
 <script>
   export default {
+    props:['swiperData'],
     data() {
       return {
         swiperOption:{
           pagination: '.swiper-pagination',
           loop: true,
           autoplay : 3000,
-        }
+        },
       }
-    },
-
+    }
   }
 </script>
 

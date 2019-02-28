@@ -1,10 +1,10 @@
 <template>
     <div>
-      <myHeader/>
-      <mySwiper/>
-      <myIcons/>
-      <myTuijian/>
-      <myweekedGoWhere/>
+      <myHeader :city="city"/>
+      <mySwiper :swiperData="swiperData"/>
+      <myIcons :iconData="iconData"/>
+      <myTuijian :tuijianData="tuijianData"/>
+      <myweekedGoWhere :goWhere="goWhere"/>
     </div>
 </template>
 
@@ -14,11 +14,16 @@
   import myIcons from '../../components/Icons/Icons'
   import myTuijian from '../../components/TuiJian/Tuijian'
   import myweekedGoWhere from '../../components/weekedGoWhere/weekedGoWhere'
+  import axios from 'axios'
 
   export default {
     data() {
       return {
-        message: '',
+        swiperData:[],
+        iconData:[],
+        tuijianData:[],
+        goWhere:[],
+        city:'北京'
       }
     },
     components:{
@@ -27,6 +32,17 @@
       myIcons,
       myTuijian,
       myweekedGoWhere
+    },
+    mounted(){
+      axios.get('/api/index.json')
+        .then((respose)=>{
+          this.allData = respose.data.data
+          console.log(this.allData)
+          this.swiperData = this.allData.swiperList
+          this.iconData = this.allData.iconList
+          this.tuijianData = this.allData.recommendList
+          this.goWhere = this.allData.weekendList
+        })
     }
   }
 </script>

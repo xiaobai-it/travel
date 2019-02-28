@@ -15,64 +15,13 @@
 
 <script>
   export default {
+    props:['iconData'],
     data() {
       return {
         swiperOption:{ //轮播的配置属性
           loop: false,
           autoplay : false,
-        },
-        iconList:[
-         {
-           id:'0001',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-           desc:'景点门票'
-         },
-         {
-           id:'0002',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-           desc:'一日游'
-         },
-         {
-           id:'0003',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-           desc:'北京必游'
-         },
-         {
-           id:'0004',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png',
-           desc:'溜娃儿'
-         },
-         {
-           id:'0005',
-           imgUrl:'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20191/0334cf5430b9b5505fd79e2b8d7e8670.png',
-           desc:'爬长城'
-         },
-         {
-           id:'0006',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-           desc:'故宫'
-         },
-         {
-           id:'0007',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/e3/67df61427c8e1302.png',
-           desc:'茶馆相声'
-         },
-         {
-           id:'0008',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png',
-           desc:'踏青赏花'
-         },
-         {
-           id:'0009',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png',
-           desc:'动画植园'
-         },
-         {
-           id:'0010',
-           imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png',
-           desc:'动物植园'
-         }
-       ]
+        }
       }
     },
     computed:{
@@ -80,7 +29,7 @@
       pages(){
         //用来显示的页数
         const pages = []
-        this.iconList.forEach((item ,index )=>{
+        this.iconData.forEach((item ,index )=>{
           const page = Math.floor(index/8) //显示的索引
           if(!pages[page]){
             pages[page] = [] //这里pages变成了2维数组[index][item]
