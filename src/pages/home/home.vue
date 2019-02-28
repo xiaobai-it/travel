@@ -3,6 +3,8 @@
       <myHeader/>
       <mySwiper/>
       <myIcons/>
+      <myTuijian/>
+      <myweekedGoWhere/>
     </div>
 </template>
 
@@ -10,6 +12,8 @@
   import myHeader from '../../components/Header/Header'
   import mySwiper from '../../components/Swiper/Swiper'
   import myIcons from '../../components/Icons/Icons'
+  import myTuijian from '../../components/TuiJian/Tuijian'
+  import myweekedGoWhere from '../../components/weekedGoWhere/weekedGoWhere'
 
   export default {
     data() {
@@ -20,7 +24,9 @@
     components:{
       myHeader,
       mySwiper,
-      myIcons
+      myIcons,
+      myTuijian,
+      myweekedGoWhere
     }
   }
 </script>
