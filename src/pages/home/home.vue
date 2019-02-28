@@ -9,11 +9,11 @@
 </template>
 
 <script>
-  import myHeader from '../../components/Header/Header'
-  import mySwiper from '../../components/Swiper/Swiper'
-  import myIcons from '../../components/Icons/Icons'
-  import myTuijian from '../../components/TuiJian/Tuijian'
-  import myweekedGoWhere from '../../components/weekedGoWhere/weekedGoWhere'
+  import myHeader from '../../components/Home/Header/Header'
+  import mySwiper from '../../components/Home/Swiper/Swiper'
+  import myIcons from '../../components/Home/Icons/Icons'
+  import myTuijian from '../../components/Home/TuiJian/Tuijian'
+  import myweekedGoWhere from '../../components/Home/weekedGoWhere/weekedGoWhere'
   import axios from 'axios'
 
   export default {

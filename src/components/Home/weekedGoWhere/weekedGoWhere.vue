@@ -26,7 +26,7 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/styles/mixins.styl'
+  @import '../../../assets/styles/mixins.styl'
   .title
     line-height: .8rem
     background: #eee
