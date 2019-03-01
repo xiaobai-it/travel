@@ -1,6 +1,6 @@
 <template>
     <div>
-      <myHeader :city="city"/>
+      <myHeader/>
       <mySwiper :swiperData="swiperData"/>
       <myIcons :iconData="iconData"/>
       <myTuijian :tuijianData="tuijianData"/>
@@ -23,7 +23,6 @@
         iconData:[],
         tuijianData:[],
         goWhere:[],
-        city:'北京'
       }
     },
     components:{

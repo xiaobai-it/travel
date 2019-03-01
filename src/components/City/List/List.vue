@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{city}}</div>
           </div>
         </div>
       </div>
@@ -13,14 +13,16 @@
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list" >
           <div class="button-wrapper" v-for="(item) in hotCity" :key="item.id">
-            <div class="button">{{item.name}}</div>
+            <div class="button" @click="chooseCity">{{item.name}}</div>
           </div>
         </div>
       </div>
       <div class="area" v-for="(item,key) in allCity" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="(oneItem) in item" :key="item.id">{{oneItem.name}}</div>
+          <div class="item border-bottom" v-for="(oneItem) in item" :key="item.id" @click="chooseCity">
+            {{oneItem.name}}
+          </div>
         </div>
 
       </div>
@@ -31,6 +33,7 @@
 <script>
   import Bscroll from 'better-scroll'
   import PubSub from 'pubsub-js'
+  import {mapActions ,mapState} from 'vuex'
 
   export default {
     props:['allCity','hotCity'],
@@ -44,6 +47,18 @@
       PubSub.subscribe('cityName',(msg,cityName)=>{
         this.cityName = cityName
       })
+    },
+    computed:{
+      ...mapState(['city'])
+    },
+    methods:{
+      //用户自己选择的城市
+      // ...mapActions(['chooseCity'])
+      chooseCity(e){
+        const city = e.target.innerText
+        this.$store.dispatch('chooseCity',{city})
+        this.$router.push('/')
+      }
     },
     watch:{
       cityName(){

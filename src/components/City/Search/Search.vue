@@ -5,7 +5,7 @@
     </div>
     <div class="search-content" ref="myscroll" v-show="inputSearch">
       <ul>
-        <li class="search-item border-bottom" v-for="(item,index) in list" :key="index">
+        <li class="search-item border-bottom" v-for="(item,index) in list" :key="index"  @click="chooseCity">
           {{item}}
         </li>
         <li class="search-item border-bottom border-bottom-text" v-if="list.length<=0">
@@ -32,6 +32,14 @@
     mounted(){
       console.log(this.$refs.myscroll);
       this.scroll = new Bscroll(this.$refs.myscroll)
+    },
+    methods:{
+      //用户自己选择的城市
+      chooseCity(e){
+        const city = e.target.innerText
+        this.$store.dispatch('chooseCity',{city})
+        this.$router.push('/')
+      }
     },
     watch:{
       inputSearch(){

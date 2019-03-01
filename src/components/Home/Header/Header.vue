@@ -18,14 +18,21 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+
   export default {
-    props:['city'],
     data() {
       return {
         message: '',
-
       }
+    },
+    // mounted(){
+    //   this.$store.dispatch('showCity')
+    // },
+    computed:{
+      ...mapState(['city'])
     }
+
   }
 </script>
 
