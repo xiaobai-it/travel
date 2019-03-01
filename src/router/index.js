@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 import Home from '../pages/Home/home'
 import City from '../pages/City/City'
+import Details from '../pages/Details/Details'
 
 Vue.use(Router)
 
@@ -16,13 +17,18 @@ export default new Router({
     // },
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
       path: '/city',
-      name: 'City',
+      name: 'city',
       component: City
+    },
+    {
+      path: '/details/:id',
+      name: 'details',
+      component: Details
     },
   ]
 })
