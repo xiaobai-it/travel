@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item,key) in allCity" :key="key">
+      <div class="area" v-for="(item,key) in allCity" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="(oneItem) in item" :key="item.id">{{oneItem.name}}</div>
@@ -30,14 +30,30 @@
 
 <script>
   import Bscroll from 'better-scroll'
+  import PubSub from 'pubsub-js'
+
   export default {
     props:['allCity','hotCity'],
     data() {
       return {
+        cityName:''
       }
     },
     mounted(){
       this.scroll = new Bscroll(this.$refs.wraperScroll)
+      PubSub.subscribe('cityName',(msg,cityName)=>{
+        this.cityName = cityName
+      })
+    },
+    watch:{
+      cityName(){
+        //监听界面右侧的26个字母触发后改变的值
+        if(this.cityName){
+          //通过Bscroll第三方库，自动滚动到对应的字母位置,添加的是滚动的对应的元素标签
+          const element = this.$refs[this.cityName][0]
+          this.scroll.scrollToElement(element) //这个是Bscroll第三方库自己带有的方法
+        }
+      }
     }
   }
 
