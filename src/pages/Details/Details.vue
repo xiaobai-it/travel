@@ -11,11 +11,14 @@
       </div>
     </div>
     <Gallary :imgs="imgs" v-if="showGallary" @hiddenGallary ='hiddenGallary'/>
+    <Header/>
+    <div class="content"></div>
   </div>
 </template>
 
 <script>
   import Gallary from '../../common/Gallary/Gallary'
+  import Header from '../../components/Detail/Header/Header'
   export default {
     data () {
       return {
@@ -25,7 +28,8 @@
       }
     },
     components:{
-      Gallary
+      Gallary,
+      Header
     },
     methods:{
       isShowGallary(){
@@ -40,6 +44,8 @@
 </script>
 
 <style lang="stylus" scoped>
+    .content
+      height :50rem
     .banner
       position: relative
       overflow: hidden
