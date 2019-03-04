@@ -10,7 +10,9 @@
         </div>
       </div>
     </div>
-    <Gallary :gallaryImgs="gallaryImgs" v-if="showGallary" @hiddenGallary ='hiddenGallary'/>
+    <FadeAnimation>
+      <Gallary :gallaryImgs="gallaryImgs" v-if="showGallary" @hiddenGallary ='hiddenGallary'/>
+    </FadeAnimation>
     <Header :sightName="sightName"/>
     <div class="content">
       <List :categoryList="categoryList"/>
@@ -24,6 +26,7 @@
   import Gallary from '../../common/Gallary/Gallary'
   import Header from '../../components/Detail/Header/Header'
   import List from '../../components/Detail/List/List'
+  import FadeAnimation from '../../common/FadeAnimation/FadeAnimation'
   export default {
     data () {
       return {
@@ -37,7 +40,8 @@
     components:{
       Gallary,
       Header,
-      List
+      List,
+      FadeAnimation
     },
     mounted(){
       axios.get('/api/detail.json')
