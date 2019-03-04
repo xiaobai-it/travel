@@ -1,35 +1,55 @@
 <template>
   <div>
     <div class="banner" @click="isShowGallary">
-      <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg" alt="">
+      <img class="banner-img" :src="bannerImg" alt="">
       <div class="banner-info">
-        <div class="banner-tittle">故宫(AAAAA景区)</div>
+        <div class="banner-tittle">{{sightName}}</div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe692;</span>
-          8
+          {{gallaryImgs.length}}
         </div>
       </div>
     </div>
-    <Gallary :imgs="imgs" v-if="showGallary" @hiddenGallary ='hiddenGallary'/>
-    <Header/>
-    <div class="content"></div>
+    <Gallary :gallaryImgs="gallaryImgs" v-if="showGallary" @hiddenGallary ='hiddenGallary'/>
+    <Header :sightName="sightName"/>
+    <div class="content">
+      <List :categoryList="categoryList"/>
+    </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+
   import Gallary from '../../common/Gallary/Gallary'
   import Header from '../../components/Detail/Header/Header'
+  import List from '../../components/Detail/List/List'
   export default {
     data () {
       return {
         showGallary:false,
-        imgs: ['http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg',
-          'http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png']
+        bannerImg:'',
+        categoryList:[],
+        gallaryImgs:[],
+        sightName:'',
       }
     },
     components:{
       Gallary,
-      Header
+      Header,
+      List
+    },
+    mounted(){
+      axios.get('/api/detail.json')
+        .then((response)=>{
+          this.bannerImg = response.data.data.bannerImg
+          this.categoryList = response.data.data.categoryList
+          this.gallaryImgs = response.data.data.gallaryImgs
+          this.sightName = response.data.data.sightName
+        })
+        .catch(()=>{
+          console.log('由于网络问题，数据没有请求到，请稍后再试！')
+        })
     },
     methods:{
       isShowGallary(){

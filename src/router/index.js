@@ -30,5 +30,9 @@ export default new Router({
       name: 'details',
       component: Details
     },
-  ]
+  ],
+  // 路由在切换界面的时候，保证打开的新页面，是从最顶部开始显示的
+  scrollBehavior(to,from,savedPosition){
+    return{x:0,y:0}
+  }
 })

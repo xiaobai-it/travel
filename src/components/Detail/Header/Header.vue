@@ -8,7 +8,7 @@
     <div class="header-fixed" :style="opacityBgColor" v-if="showOneHeader">
       <router-link to="/" class="header-fixed" >
         <span class="iconfont header-fixed-back">&#xe624;</span>
-        故宫(AAAAA景区)
+        {{sightName}}
       </router-link>
     </div>
   </div>
@@ -16,6 +16,9 @@
 
 <script>
   export default {
+    props:{
+      sightName:String
+    },
     data() {
       return {
         showOneHeader: false,
