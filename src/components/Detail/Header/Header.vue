@@ -28,6 +28,9 @@
     //activated生命周期的钩子函数，意思是只要界面显示，这个函数就会执行,但是不管用，换成了mountend
       window.addEventListener('scroll',this.isShowOneHeader)
     },
+    beforeDestroy(){
+      window.removeEventListener('scroll',this.isShowOneHeader)
+    },
     methods:{
       isShowOneHeader(){
         const top = document.documentElement.scrollTop
